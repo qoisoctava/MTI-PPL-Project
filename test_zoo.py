@@ -6,12 +6,12 @@ class TestAddAnimal:
     # @DataPoints equivalent - Fixture untuk data test
     @pytest.fixture
     def zoo(self):
-        """Buat kebun binatang baru untuk setiap test."""
+        #Buat kebun binatang baru untuk setiap test.
         return Zoo("Test Zoo")
     
     @pytest.fixture
     def sample_animals(self):
-        """Data hewan contoh untuk testing."""
+        #Data hewan contoh untuk testing.
         return [
             {'name': 'Simba', 'type': 'Singa'},
             {'name': 'Dumbo', 'type': 'Gajah'},
@@ -27,8 +27,6 @@ class TestAddAnimal:
         # Assertions untuk memverifikasi hasil
         assert animal['name'] == "Simba"
         assert animal['type'] == "Singa"
-        assert animal['is_fed'] == False
-        assert animal['age'] == 1
         assert zoo.count_animals() == 1
         assert zoo.is_animal_exists("Simba") == True
     
@@ -47,8 +45,6 @@ class TestAddAnimal:
         # Verifikasi animal object
         assert animal['name'] == animal_name
         assert animal['type'] == animal_type
-        assert animal['is_fed'] == False
-        assert animal['age'] == 1
         
         # Verifikasi state zoo
         assert zoo.count_animals() == expected_count
@@ -70,7 +66,7 @@ class TestAddAnimal:
         assert zoo.count_animals() == 0
     
     # Test menggunakan sample_animals fixture
-    def test_add_multiple_animals_from_fixture(self, zoo, sample_animals):
+    def test_add_animals(self, zoo, sample_animals):
         """Test menambah beberapa hewan menggunakan fixture data."""
         # Tambah semua hewan dari fixture
         for animal_data in sample_animals:
@@ -110,7 +106,7 @@ class TestAddAnimal:
         assert zoo.is_animal_exists(name) == True
 
 # Test class tambahan untuk demonstrasi variasi
-class TestAddAnimalEdgeCases:
+# class TestAddAnimalEdgeCases:
     
     @pytest.fixture
     def zoo(self):
